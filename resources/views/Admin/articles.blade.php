@@ -1,6 +1,8 @@
 @extends('layouts.base')
 
 @section('content')
+
+
     <section class="breadcrumb lg:flex items-start">
         <div>
             <h1>Blog</h1>
@@ -12,44 +14,21 @@
                 <li>List - Card Rows</li>
             </ul>
         </div>
-
         <div class="flex flex-wrap gap-2 items-center ltr:ml-auto rtl:mr-auto mt-5 lg:mt-0">
-
-
-
-            <!-- Search -->
             <form class="flex flex-auto" action="{{ route('List-Article') }}" method="GET">
                 <label class="form-control-addon-within rounded-full">
-                    <input class="form-control border-none" name="search" placeholder="Search" value="{{ $search }}">
+                    <input class="form-control border-none" name="search" placeholder="Search" value="{{ request('search') }}">
                     <button class="text-gray-300 dark:text-gray-700 text-xl leading-none la la-search ltr:mr-4 rtl:ml-4"></button>
                 </label>
             </form>
 
             <div class="flex gap-x-2">
-
-                <!-- Sort By -->
-                <div class="dropdown">
-                    <button class="btn btn_outlined btn_secondary uppercase" data-toggle="dropdown-menu"
-                        aria-expanded="false">
-                        Sort By
-                        <span class="ltr:ml-3 rtl:mr-3 la la-caret-down text-xl leading-none"></span>
-                    </button>
-                    <div class="dropdown-menu">
-                        <a href="#no-link">Ascending</a>
-                        <a href="#no-link">Descending</a>
-                    </div>
-                </div>
-
-                <!-- Add New -->
                 <a href="{{ route('Form') }}" class="btn btn_primary uppercase">Add New</a>
             </div>
         </div>
     </section>
 
-    <!-- List -->
     <div class="flex flex-col gap-y-5">
-
-
         @forelse ($data as $post)
             <div class="card card_row card_hoverable">
                 <div>
@@ -94,7 +73,6 @@
         @endforelse
     </div>
 
-
     <div class="mt-5">
         <!-- Pagination -->
         <div class="card lg:flex">
@@ -122,4 +100,6 @@
             </div>
         </div>
     </div>
+
+
 @endsection

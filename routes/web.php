@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\BlogController;
-use App\Http\Controllers\Landing;
+use App\Http\Controllers\LandingController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,8 +25,9 @@ Route::prefix('Admin')->group(function () {
     Route::get('Delete/{slug}', [BlogController::class, 'Delete']);
 });
 
+
 Route::prefix('Home')->group(function(){
     Route::view('/', 'landing.index')->name('Home');
-    Route::get('Blog', [Landing::class, 'Index'])->name('Blog');
-    Route::get('Detail-Blog/{slug}' ,[Landing::class,'Detail'])->name('Detail-Blog');
+    Route::get('Blog', [LandingController::class, 'Index'])->name('Blog');
+    Route::get('Detail-Blog/{slug}' ,[LandingController::class,'Detail'])->name('Detail-Blog');
 });

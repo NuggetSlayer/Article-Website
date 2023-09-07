@@ -4,7 +4,7 @@
     <section class="section">
 
         <div class="container">
-            <section class="section py-14" id="home">
+            <section class="section py-10" id="home">
                 <div class="container">
                     <div class="lg:flex justify-center">
                         <div class="lg:w-2/3 mx-2">
