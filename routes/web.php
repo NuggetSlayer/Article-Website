@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\Landing;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,11 +16,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::prefix('Admin')->group(function () {
-    Route::get('Dashboard', [BlogController::class, 'index'])->name('Dashboard');
+    Route::get('Dashboard', [BlogController::class, 'Index'])->name('Dashboard');
     Route::get('List-Article', [BlogController::class, 'ListArticle'])->name('List-Article');
     Route::view('FormArticle', 'admin.form')->name('Form');
     Route::post('Add', [BlogController::class,'Add'])->name('AddArticle');
     Route::get('Edit/{slug}', [BlogController::class,'Edit'])->name('EditArticle');
     Route::put('Edit/{slug}', [BlogController::class, 'Update'])->name('Update');
     Route::get('Delete/{slug}', [BlogController::class, 'Delete']);
+});
+
+Route::prefix('Home')->group(function(){
+    Route::view('/', 'landing.index')->name('Home');
+    Route::get('Blog', [Landing::class, 'Index'])->name('Blog');
+    Route::get('Detail-Blog/{slug}' ,[Landing::class,'Detail'])->name('Detail-Blog');
 });

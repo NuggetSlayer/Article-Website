@@ -21,10 +21,16 @@ class BlogController extends Controller
     }
 
 
-    public function ListArticle()
+    public function ListArticle(Request $request)
     {
-        $posts = Blog::with('user')->paginate(3);
-        return view('admin.articles', compact('posts'));
+        if ($request->input('search')) {
+            $data = Blog::where('title', 'like', '%' . $request->input('search') . '%')->with('user')->paginate(3);
+            $query = $request->input('search');
+        } else {
+            $data = Blog::with('user')->paginate(6);
+            $query = '';
+        }
+        return view('admin.articles', ['data' => $data , 'search' => $query] );
     }
 
 

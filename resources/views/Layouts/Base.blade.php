@@ -31,14 +31,6 @@
         <!-- Brand -->
         <span class="brand">Yeti</span>
 
-        <!-- Search -->
-        <form class="hidden md:block ltr:ml-10 rtl:mr-10">
-            <label class="form-control-addon-within rounded-full">
-                <input class="form-control border-none" placeholder="Search">
-                <button
-                    class="text-gray-300 dark:text-gray-700 text-xl leading-none la la-search ltr:mr-4 rtl:ml-4"></button>
-            </label>
-        </form>
 
         <!-- Right -->
         <div class="flex items-center ltr:ml-auto rtl:mr-auto">
@@ -139,16 +131,16 @@
     <script src="{{ asset('../assets/js/vendor.js') }}"></script>
     <script src="{{ asset('../assets/js/script.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-    <script>
-        
-        @if (session('success'))
+    @if (session('success'))
+        <script>
             Swal.fire({
                 icon: 'success',
                 title: 'Success',
                 text: '{{ session('success') }}',
             });
-        @endif
-
+        </script>
+    @endif
+    <script>
         function confirmDelete(postSlug) {
             Swal.fire({
                 title: 'Delete Post',
@@ -163,7 +155,6 @@
                 }
             });
         }
-
     </script>
 
 </body>
