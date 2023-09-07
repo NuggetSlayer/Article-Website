@@ -45,7 +45,7 @@ class BlogController extends Controller
             'content' => $request->content,
             'user_id' => $user,
         ]);
-        return redirect()->route('List-Article')->with('success', 'Article Successfully Added');
+        return redirect()->route('List-Article')->with('success', 'Article Successfully Added Wow');
     }
 
 
