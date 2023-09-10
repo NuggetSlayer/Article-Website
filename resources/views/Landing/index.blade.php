@@ -21,7 +21,8 @@
                     </div>
                 </div>
             </section>
-            <div class="flex justify-center">
+
+            {{-- <div class="flex justify-center">
                 <div class="w-full filters-group-wrap mb-3">
                     <div class="flex justify-center mb-5">
                         <ul class="filter-options flex flex-wrap gap-4 justify-center">
@@ -33,25 +34,30 @@
                         </ul>
                     </div>
                 </div>
-                <!--end /div-->
-            </div>
+            </div> --}}
             <!--end /div-->
 
             <div id="grid" class="md:flex justify-center">
-                <div class="md:w-1/3 p-3 picture-item" data-groups='["mockup"]'>
-                    <div class="relative block overflow-hidden rounded group transition-all duration-500">
-                        <img src="assets/images/works/img1.jpg"
-                            class="rounded transition-all duration-500 group-hover:scale-105" alt="work-image" />
-                        <a href="javascript:void(0)"
-                            class="absolute inset-3 flex items-end cursor-pointer rounded bg-white p-3 opacity-0 transition-all duration-500 group-hover:opacity-80">
-                            <div>
-                                <p class="text-sm text-gray-400">Media, Icons</p>
-                                <h6 class="text-base text-black font-medium">Open Imagination</h6>
-                            </div>
-                        </a>
+                @foreach ($data as $item)
+                    <div class="md:w-1/3 p-3 picture-item" >
+                        <div class="relative block overflow-hidden rounded group transition-all duration-500">
+                                <img src="{{ asset('storage/' . $item->image) }}"
+                                class="rounded transition-all duration-500 group-hover:scale-105" alt="work-image" />
+                            <a href="/Home/Detail-Blog/{{ $item->slug }}"
+                                class="absolute inset-3 flex items-end cursor-pointer rounded bg-white p-3 opacity-0 transition-all duration-500 group-hover:opacity-80">
+                                <div class="flex flex-col gap-2 p-2">
+                                    <h6 class="text-sm font-medium text-black">{{ $item->title }}</h6>
+                                    <p class="text-base text-gray-500 ">{!! Str::limit(strip_tags($item->content), $limit = 30, $end = '...') !!}</p>
+                                </div>
+                            </a>
+                        </div>
                     </div>
-                </div>
+                @endforeach
 
+
+
+
+                {{-- 
                 <div class="md:w-1/3 p-3 picture-item" data-groups='["android"]'>
                     <div class="relative block overflow-hidden rounded group transition-all duration-500">
                         <img src="assets/images/works/img2.jpg"
@@ -219,12 +225,7 @@
                             </div>
                         </a>
                     </div>
-                </div>
-            </div>
-            <!--end /div-->
-            <div class="flex justify-center mt-8">
-                <a href="work.html" class="py-4 px-7 rounded text-sm font-medium bg-blue-500 text-white">More Works <i
-                        class="mdi mdi-arrow-right ms-1"></i></a>
+                </div> --}}
             </div>
         </div>
     </section>

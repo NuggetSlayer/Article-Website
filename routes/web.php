@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('Admin')->group(function () {
     Route::get('Dashboard', [BlogController::class, 'Index'])->name('Dashboard');
+    Route::get('/', [BlogController::class, 'Index'])->name('Dashboard');
     Route::get('List-Article', [BlogController::class, 'ListArticle'])->name('List-Article');
     Route::view('FormArticle', 'admin.form')->name('Form');
     Route::post('Add', [BlogController::class,'Add'])->name('AddArticle');
@@ -27,7 +28,7 @@ Route::prefix('Admin')->group(function () {
 
 
 Route::prefix('Home')->group(function(){
-    Route::view('/', 'landing.index')->name('Home');
-    Route::get('Blog', [LandingController::class, 'Index'])->name('Blog');
+    Route::get('/', [LandingController::class, 'Index'])->name('Home');
+    Route::get('Blog', [LandingController::class, 'Blogs'])->name('Blog');
     Route::get('Detail-Blog/{slug}' ,[LandingController::class,'Detail'])->name('Detail-Blog');
 });

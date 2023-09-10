@@ -1,5 +1,8 @@
 @extends('layouts.base')
-
+@section('css')
+    <script src="https://cdn.tiny.cloud/1/q4zmc33kggos0wimsn8ka2r4x6rcbbwj3hznvp376aafo7wn/tinymce/6/tinymce.min.js"
+        referrerpolicy="origin"></script>
+@endsection
 @section('content')
     <div class="grid  gap-5">
 
@@ -58,4 +61,14 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('js')
+    <script>
+        tinymce.init({
+            selector: 'textarea',
+            plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
+            toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
+        });
+    </script>
 @endsection
